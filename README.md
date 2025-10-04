@@ -43,19 +43,26 @@ star-wars-searcher/
 
 ## Setup Instructions
 
-1. Clone the repository
+1. Clone the repository:
+
 git clone https://github.com/KumariS/star-wars-character-searcher.git
+
 cd star-wars-searcher
 
-2. Install dependencies
+2. Install dependencies:
+
 npm install
 
-3. Run the development server
+3. Run the development server:
+
 npm run dev
+
 Open the browser at the URL printed in the terminal (usually http://localhost:5173/).
 
-4. Build for production (optional)
+4. Build for production (optional):
+
 npm run build
 
-5. Run the tests
+5. Run the tests:
+
 npx web-test-runner
