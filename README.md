@@ -25,23 +25,25 @@ A simple frontend project built with **Lit + Vanilla JavaScript + Vite** that al
 
 ## Project Structure
 star-wars-searcher/
-│── index.html
-│── package.json
-│── vite.config.js
-│── README.md
-│── src/
-│ ├── app.js
-│ ├── style.css
-│ ├── components/
-│ │ ├── search-bar.js
-│ │ ├── character-list.js
-│ │ ├── character-profile.js
+├── src/
+│   └── components/
+│       ├── character-list.js
+│       ├── search-bar.js
+│       ├── character-profile.js
+│       └── __tests__/
+│           ├── character-list.spec.js
+│           ├── search-bar.spec.js
+│           └── character-profile.spec.js
+├── jest.config.cjs
+├── jest.setup.js
+├── package.json
+├── index.html
+└── web-test-runner.config.mjs
+
 
 ## Setup Instructions
 
-1.Clone the repository
-
-```bash
+1. Clone the repository
 git clone https://github.com/KumariS/star-wars-character-searcher.git
 cd star-wars-searcher
 
@@ -54,3 +56,6 @@ Open the browser at the URL printed in the terminal (usually http://localhost:51
 
 4. Build for production (optional)
 npm run build
+
+5. Run the tests
+npx web-test-runner
