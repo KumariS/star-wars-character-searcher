@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
 
 class CharacterList extends LitElement {
-  static styles = css`
+    static styles = css`
     ul {
       list-style: none;
       padding: 0;
@@ -16,20 +16,20 @@ class CharacterList extends LitElement {
     }
   `;
 
-  static properties = {
-    characters: { type: Array },
-  };
+    static properties = {
+        characters: { type: Array },
+    };
 
-  constructor() {
-    super();
-    this.characters = [];
-  }
+    constructor() {
+        super();
+        this.characters = [];
+    }
 
-  render() {
-    return html`
+    render() {
+        return html`
       <ul>
         ${this.characters.map(
-          (c) => html`
+            (c) => html`
             <li @click=${() => this.selectCharacter(c)}>
               ${c.name} (${c.birth_year})
             </li>
@@ -37,11 +37,11 @@ class CharacterList extends LitElement {
         )}
       </ul>
     `;
-  }
+    }
 
-  selectCharacter(character) {
-    this.dispatchEvent(new CustomEvent('select', { detail: character }));
-  }
+    selectCharacter(character) {
+        this.dispatchEvent(new CustomEvent('select', { detail: character }));
+    }
 }
 
 customElements.define('character-list', CharacterList);

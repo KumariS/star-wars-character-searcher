@@ -4,7 +4,7 @@ import './components/character-list.js';
 import './components/character-profile.js';
 
 class AppRoot extends LitElement {
-  static styles = css`
+    static styles = css`
     .container {
       max-width: 600px;
       margin: 2rem auto;
@@ -26,50 +26,50 @@ class AppRoot extends LitElement {
     }
   `;
 
-  static properties = {
-    characters: { type: Array },
-    selected: { type: Object },
-    loading: { type: Boolean },
-    error: { type: String },
-    searched: { type: Boolean } // track if a search was performed
-  };
+    static properties = {
+        characters: { type: Array },
+        selected: { type: Object },
+        loading: { type: Boolean },
+        error: { type: String },
+        searched: { type: Boolean },
+    };
 
-  constructor() {
-    super();
-    this.characters = [];
-    this.selected = null;
-    this.loading = false;
-    this.error = '';
-    this.searched = false;
-  }
-
-  async handleSearch(query) {
-    if (!query) return;
-    this.loading = true;
-    this.error = '';
-    this.searched = true;
-    this.characters = [];
-    this.selected = null;
-
-    try {
-      const res = await fetch(`https://swapi.dev/api/people/?search=${query}`);
-      if (!res.ok) throw new Error(`API error: ${res.status}`);
-      const data = await res.json();
-
-      this.characters = data.results || [];
-    } catch (err) {
-      this.error = err.message;
-    } finally {
-      this.loading = false;
+    constructor() {
+        super();
+        this.characters = [];
+        this.selected = null;
+        this.loading = false;
+        this.error = '';
+        this.searched = false;
     }
-  }
 
-  handleSelect(character) {
-    this.selected = character;
-  }
+    async handleSearch(query) {
+        if (!query) return;
+        this.loading = true;
+        this.error = '';
+        this.searched = true;
+        this.characters = [];
+        this.selected = null;
 
-  render() {
-    return html`
+        try {
+            const res = await fetch(`https://swapi.dev/api/people/?search=${query}`);
+            if (!res.ok) throw new Error(`API error: ${res.status}`);
+            const data = await res.json();
+
+            this.characters = data.results || [];
+        } catch (err) {
+            this.error = err.message;
+        } finally {
+            this.loading = false;
+        }
+    }
+
+    handleSelect(character) {
+        this.selected = character;
+    }
+
+    render() {
+        return html`
       <div class="container">
         <h1>Star Wars Character Searcher</h1>
 
@@ -84,8 +84,8 @@ class AppRoot extends LitElement {
 
         <!-- No results -->
         ${!this.loading && this.searched && !this.error && this.characters.length === 0
-          ? html`<div class="no-results">No results found.</div>`
-          : ''}
+                ? html`<div class="no-results">No results found.</div>`
+                : ''}
 
         <!-- Character List -->
         <character-list
@@ -95,11 +95,11 @@ class AppRoot extends LitElement {
 
         <!-- Profile -->
         ${this.selected
-          ? html`<character-profile .character=${this.selected}></character-profile>`
-          : ''}
+                ? html`<character-profile .character=${this.selected}></character-profile>`
+                : ''}
       </div>
     `;
-  }
+    }
 }
 
 customElements.define('app-root', AppRoot);
